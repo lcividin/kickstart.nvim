@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -227,6 +227,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'tpope/vim-fugitive', -- Git Tool
+
+  'github/copilot.vim', -- Github Co-pilot addon
+  'ryanoasis/vim-devicons', -- Icons for filetypes
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -239,6 +243,12 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+  }, -- Indent lines colours
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following lua:
@@ -256,6 +266,13 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+
+  -- This is a filemanager like nerdtree
+  {
+    'ms-jpq/chadtree',
+    branch = 'chad',
+    build = 'python3 -m chadtree deps',
   },
 
   -- NOTE: Plugins can also be configured to run lua code when they are loaded.
